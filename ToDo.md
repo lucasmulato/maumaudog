@@ -12,6 +12,9 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 
 ## 🎯 To Do
 - **Frontend**
+  - [ ] Implement functionality to update order status from the UI.
+  - [ ] Integrate frontend with backend API to fetch real order data.
+  - [ ] Create a custom favicon for the application.
 - **Backend Setup**
   - [ ] Implement a more robust logging strategy (e.g., using a library like Winston).
   - [ ] Add basic API documentation (e.g., using Swagger/OpenAPI).
@@ -23,14 +26,18 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 - **Testing**
   - [ ] Write unit tests for the `orderService` to ensure parsing and saving logic is correct.
   - [ ] Write integration tests for the main API endpoints.
+- **Project Management**
+  - [ ] Review and assign all current tasks in the "To Do" and "In Progress" sections.
 
 ## 🚧 In Progress
 
-- [x] Set up the basic project structure.
-- [x] Research iFood and 99food APIs for order integration.
+- [ ] Research iFood and 99food APIs for order integration. (`@username`)
 
 ## ✅ Done
 
+- **Frontend**: Built the main dashboard layout (`DashboardLayout.jsx`).
+- **Frontend**: Created components to display orders (`OrderList.jsx`, `OrderCard.jsx`).
+- **Project Setup**: Set up the basic project structure.
 - **Project Setup**: Initialized project structure, `ToDo.md`, and technology stack.
 - **Frontend**: Initialized project with Vite, React, and Tailwind CSS.
 - **Database**: Designed `schema.sql`, created migration script, and set up DB connection.
