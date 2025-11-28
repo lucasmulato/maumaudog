@@ -11,30 +11,34 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 ---
 
 ## 🎯 To Do
-
-- [ ] Initialize the frontend project inside the `frontend/` directory.
+- **Frontend**
+- **Backend Setup**
+  - [ ] Implement a more robust logging strategy (e.g., using a library like Winston).
+  - [ ] Add basic API documentation (e.g., using Swagger/OpenAPI).
 - **Backend API Development**
-  - [ ] Create API endpoint (webhook) to receive new orders from iFood.
-  - [ ] Create API endpoint (webhook) to receive new orders from 99food.
-  - [ ] Implement logic to parse and save orders from all sources into the database.
-  - [ ] Create an API endpoint for the printer bridge to fetch new orders to be printed.
+  - [ ] Create API endpoints to manage order status (e.g., PREPARING, COMPLETED, CANCELLED).
+- **Printer Bridge Development**
+  - [ ] Add error handling for network issues and printer status (e.g., offline, out of paper).
+  - [ ] Implement retry logic for fetching orders if the backend is unavailable.
+- **Testing**
+  - [ ] Write unit tests for the `orderService` to ensure parsing and saving logic is correct.
+  - [ ] Write integration tests for the main API endpoints.
 
 ## 🚧 In Progress
 
-- **Backend Setup**
-  - [x] Set up database connection in `backend/`.
-  - [ ] Create a script to run the `schema.sql` migration.
 - [x] Set up the basic project structure.
 - [x] Research iFood and 99food APIs for order integration.
-- **Printer Bridge Development**
-  - [x] Initialize project in `printer_bridge/` (e.g., using Node.js).
-  - [x] Implement logic to format order data into a receipt and send it to the USB printer.
-  - [ ] Implement logic to fetch new orders from the backend.
 
 ## ✅ Done
 
-- [x] Create this `ToDo.md` file to track project tasks.
-- [x] Define the main features for the restaurant application.
-- [x] Choose backend technology (Node.js, Express, PostgreSQL) and initialize project in `backend/`.
-- [x] Design database schema and create `schema.sql` file.
-- [x] Add a library for ESC/POS printer commands (for the POS-5890U-L).
+- **Project Setup**: Initialized project structure, `ToDo.md`, and technology stack.
+- **Frontend**: Initialized project with Vite, React, and Tailwind CSS.
+- **Database**: Designed `schema.sql`, created migration script, and set up DB connection.
+- **Backend Core**: Implemented order parsing and saving logic.
+- **Backend API for Printer**:
+  - Created endpoint to fetch new orders (`GET /api/orders/new`).
+  - Created endpoint to mark orders as printed (`PATCH /api/orders/:id/mark-as-printed`).
+- **Backend API for Webhooks**:
+  - Created secure webhook endpoint for iFood (`POST /api/webhooks/ifood`).
+  - Created secure webhook endpoint for 99food (`POST /api/webhooks/99food`).
+- **Printer Bridge**: Initialized project and implemented logic to format and print receipts.
