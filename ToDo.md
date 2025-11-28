@@ -12,17 +12,27 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 
 ## 🎯 To Do
 - **Frontend**
+  - [ ] Add real-time updates to the dashboard using WebSockets or polling.
+  - [ ] Implement user feedback (e.g., toasts/notifications) for actions like updating order status.
+  - [ ] Create a dedicated page to view order details and history.
 - **Backend Setup**
   - [ ] Add basic API documentation (e.g., using Swagger/OpenAPI).
 - **Backend API Development**
   - [ ] Create API endpoints to manage order status (e.g., PREPARING, COMPLETED, CANCELLED).
-- **Printer Bridge Development**
-  - [ ] Add error handling for network issues and printer status (e.g., offline, out of paper).
-  - [ ] Implement retry logic for fetching orders if the backend is unavailable.
-- **Testing**
-  - [ ] Write integration tests for the main API endpoints.
 - **Project Management**
   - [ ] Review and assign all current tasks in the "To Do" and "In Progress" sections.
+- **DevOps / Infrastructure**
+  - [ ] Set up a CI/CD pipeline (e.g., GitHub Actions) to automate testing and builds.
+  - [ ] Dockerize the backend, frontend, and printer bridge for consistent environments.
+  - [ ] Implement health check endpoints (e.g., `/health`) for all services.
+- **Security**
+  - [ ] Implement authentication and authorization for API endpoints.
+  - [ ] Add rate limiting to public-facing API endpoints to prevent abuse.
+  - [ ] Use environment variables for all secrets and sensitive configurations.
+- **Testing & Quality**
+  - [ ] Set up an automated error monitoring service (e.g., Sentry, Datadog).
+  - [ ] Write end-to-end (E2E) tests for critical user flows on the frontend.
+  - [ ] Increase test coverage for backend services and utilities.
 
 ## 🚧 In Progress
 
@@ -30,6 +40,9 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 
 ## ✅ Done
 
+- **Testing**: Wrote integration tests for the main API endpoints.
+- **Printer Bridge Development**: Added robust error handling for network and printer status (offline, out of paper).
+- **Printer Bridge Development**: Implemented retry logic for fetching orders by handling errors gracefully in the polling loop.
 - **Backend Setup**: Implemented a robust logging strategy using Winston.
 - **Testing**: Wrote unit tests for the `orderService` to ensure parsing and saving logic is correct.
 - **Frontend**: Integrated frontend with backend API to fetch and update order data.

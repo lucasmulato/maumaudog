@@ -1,6 +1,6 @@
 import React from 'react';
-import DashboardLayout from './src/components/DashboardLayout';
-import OrderList from './src/components/OrderList';
+import DashboardLayout from './components/DashboardLayout';
+import OrderList from './components/OrderList';
 
 function App() {
   return (
