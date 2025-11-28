@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../db');
+const logger = require('../logger');
 
 const router = express.Router();
 
@@ -27,8 +28,8 @@ router.get('/new', async (req, res) => {
     const { rows } = await db.query(query);
     res.json(rows);
   } catch (err) {
-    console.error('Error fetching new orders:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    logger.error('Error fetching new orders:', err);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 

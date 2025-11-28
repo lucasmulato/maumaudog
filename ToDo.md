@@ -12,11 +12,7 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 
 ## 🎯 To Do
 - **Frontend**
-  - [ ] Implement functionality to update order status from the UI.
-  - [ ] Integrate frontend with backend API to fetch real order data.
-  - [ ] Create a custom favicon for the application.
 - **Backend Setup**
-  - [ ] Implement a more robust logging strategy (e.g., using a library like Winston).
   - [ ] Add basic API documentation (e.g., using Swagger/OpenAPI).
 - **Backend API Development**
   - [ ] Create API endpoints to manage order status (e.g., PREPARING, COMPLETED, CANCELLED).
@@ -24,7 +20,6 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
   - [ ] Add error handling for network issues and printer status (e.g., offline, out of paper).
   - [ ] Implement retry logic for fetching orders if the backend is unavailable.
 - **Testing**
-  - [ ] Write unit tests for the `orderService` to ensure parsing and saving logic is correct.
   - [ ] Write integration tests for the main API endpoints.
 - **Project Management**
   - [ ] Review and assign all current tasks in the "To Do" and "In Progress" sections.
@@ -35,6 +30,11 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 
 ## ✅ Done
 
+- **Backend Setup**: Implemented a robust logging strategy using Winston.
+- **Testing**: Wrote unit tests for the `orderService` to ensure parsing and saving logic is correct.
+- **Frontend**: Integrated frontend with backend API to fetch and update order data.
+- **Frontend**: Implemented functionality to update order status from the UI.
+- **Frontend**: Created a custom favicon for the application.
 - **Frontend**: Built the main dashboard layout (`DashboardLayout.jsx`).
 - **Frontend**: Created components to display orders (`OrderList.jsx`, `OrderCard.jsx`).
 - **Project Setup**: Set up the basic project structure.

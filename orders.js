@@ -4,6 +4,33 @@ const db = require('../db');
 const router = express.Router();
 
 /**
+ * GET /api/orders
+ * Fetches all active orders (not COMPLETED or CANCELLED) for the dashboard.
+ */
+router.get('/', async (req, res) => {
+  try {
+    const query = `
+      SELECT
+        o.id, o.customer_name as "customerName", o.status, o.created_at as "createdAt",
+        (
+          SELECT COALESCE(json_agg(oi.*), '[]'::json)
+          FROM order_items AS oi
+          WHERE oi.order_id = o.id
+        ) AS items
+      FROM orders AS o
+      WHERE o.status NOT IN ('COMPLETED', 'CANCELLED')
+      ORDER BY o.created_at ASC;
+    `;
+
+    const { rows } = await db.query(query);
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching active orders:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+/**
  * GET /api/orders/new
  * Fetches all orders that are in the 'RECEIVED' state, ready to be printed.
  * It returns a list of orders, each with its associated items.
@@ -56,6 +83,48 @@ router.patch('/:id/mark-as-printed', async (req, res) => {
     res.json(rows[0]);
   } catch (err) {
     console.error(`Error marking order ${id} as printed:`, err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+/**
+ * PATCH /api/orders/:id/status
+ * Updates the status of a specific order from the dashboard.
+ */
+router.patch('/:id/status', async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  // Basic validation
+  const allowedStatuses = ['PREPARING', 'COMPLETED', 'CANCELLED'];
+  if (!status || !allowedStatuses.includes(status)) {
+    return res.status(400).json({ error: 'Invalid status provided.' });
+  }
+
+  try {
+    const query = 'UPDATE orders SET status = $1 WHERE id = $2 RETURNING *;';
+    const { rows, rowCount } = await db.query(query, [status, id]);
+
+    if (rowCount === 0) {
+      return res.status(404).json({ error: 'Order not found.' });
+    }
+
+    const updatedOrder = rows[0];
+
+    // Broadcast the update to all connected WebSocket clients
+    const wss = req.app.get('wss');
+    wss.clients.forEach((client) => {
+      if (client.readyState === client.OPEN) {
+        client.send(JSON.stringify({
+          type: 'STATUS_UPDATE',
+          payload: { orderId: updatedOrder.id, newStatus: updatedOrder.status },
+        }));
+      }
+    });
+
+    res.status(200).json(updatedOrder);
+  } catch (err) {
+    console.error(`Error updating status for order ${id}:`, err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

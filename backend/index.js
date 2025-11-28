@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const logger = require('./logger');
 const orderRoutes = require('./routes/orders');
 const webhookRoutes = require('./routes/webhooks');
 
@@ -10,9 +11,9 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(cors()); // Allow cross-origin requests
 app.use(express.json()); // for parsing application/json
-// We need the raw body to verify webhook signatures.
-// The 'verify' option lets us capture the raw body buffer.
 app.use(express.json({
+  // We need the raw body to verify webhook signatures.
+  // The 'verify' option lets us capture the raw body buffer.
   verify: (req, res, buf) => {
     req.rawBody = buf;
   }
@@ -27,5 +28,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  logger.info(`Server is running on http://localhost:${PORT}`);
 });
