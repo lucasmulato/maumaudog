@@ -13,8 +13,8 @@ This document tracks the tasks for the **maumaudog** project. Please keep it upd
 ## 🎯 To Do
 - **Frontend**
   - [ ] Add real-time updates to the dashboard using WebSockets or polling.
-  - [ ] Implement user feedback (e.g., toasts/notifications) for actions like updating order status.
-  - [ ] Create a dedicated page to view order details and history.
+  - [ ] Implement user feedback (e.g., toasts/notifications) for actions like updating order status.Create a dedicated page to view order details and history.
+  - [ ] 
 - **Backend Setup**
   - [ ] Add basic API documentation (e.g., using Swagger/OpenAPI).
 - **Backend API Development**

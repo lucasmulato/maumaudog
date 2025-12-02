@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-Xu__eSCI.svg" />    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="mask-icon" href="/mask-icon.svg" color="#FFFFFF">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Order management dashboard for MauMauDog restaurant." />
+    <meta name="theme-color" content="#111827" />
+    <title>MauMauDog Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Dark Mode FOUC Prevention -->
+    <script>
+      // This script is inlined in the <head> to prevent a flash of unstyled content (FOUC).
+      // It checks the user's theme preference from localStorage or system settings.
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {
+        // Ignore errors in case of private browsing mode in some browsers.
+        console.error("Could not set theme from localStorage", e);
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BUMTWBil.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CpkDOSmP.css">
+  </head>
+  <body class="h-full bg-gray-900 text-gray-100">
+    <div id="root"></div>
+  </body>
+</html>
